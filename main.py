@@ -5,7 +5,6 @@ from nextcord.ext import commands as nextcordcommands
 import module_manager
 import logging
 import data_manager
-import schedule
 
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
