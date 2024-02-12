@@ -6,8 +6,6 @@ from datetime import datetime
 import data_manager as data_manager
 from module_manager import is_module_enabled
 
-print("test")
-
 def format_date(date):
     suffix = ["st", "nd", "rd", "th"][min(date.day % 10 - 1, 3)]
     return f"{date.day}{suffix} of {date.strftime('%B')}"

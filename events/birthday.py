@@ -1,11 +1,8 @@
-import schedule
-import data_manager
-import nextcord
 from datetime import datetime
-from func import run_continuously
-import asyncio
+import nextcord
 from aiocron import crontab
-import time
+import data_manager
+
 
 @crontab('0 0 * * *')
 async def check_birthday():

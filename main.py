@@ -31,7 +31,6 @@ async def on_ready():
     print("ready {0.user}".format(client))
     data_manager.init_guild_config([guild.id for guild in client.guilds])
 
-    print(client.get_guild(521256432058761226).system_channel.name)
 
 
 
