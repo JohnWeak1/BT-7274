@@ -19,7 +19,7 @@ def is_user_authed(interaction):
     return is_authed or is_admin
 
 
-@client.slash_command(name="config", guild_ids=[521256432058761226])
+@client.slash_command(name="config")
 async def config(interaction: Interaction):
     pass
 

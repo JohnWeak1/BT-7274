@@ -29,7 +29,7 @@ async def birthday_cmd(interaction, member):
     await interaction.send(embed=embed, ephemeral=True)
 
 
-@client.slash_command(guild_ids=[521256432058761226, 717100212027392080])
+@client.slash_command()
 async def birthday(interaction: Interaction):
     pass
 
