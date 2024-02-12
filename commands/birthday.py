@@ -34,11 +34,12 @@ async def birthday(interaction: Interaction):
     pass
 
 
-@birthday.subcommand(description="set your birthdate", name="set")
+@birthday.subcommand(description="set your birthday", name="set")
 async def bd_set(interaction: Interaction,
                  day: int = SlashOption(name="day", min_value=1, max_value=31),
                  month: int = SlashOption(name="month", min_value=1, max_value=12)):
     is_enabled = await is_module_enabled("birthday", interaction.guild_id, interaction)
+    print(is_enabled)
     if not is_enabled: return
 
     response = data_manager.set_user_birthday(interaction.user.id, day, month, interaction.guild_id)
@@ -57,7 +58,7 @@ async def bd_set(interaction: Interaction,
     await interaction.send(embed=embed, ephemeral=True)
 
 
-@birthday.subcommand(description="get someone's birth day", name="get")
+@birthday.subcommand(description="get someone's birthday", name="get")
 async def bd_get(interaction: Interaction,
                  member: nextcord.Member):
     is_enabled = await is_module_enabled("birthday", interaction.guild_id, interaction)

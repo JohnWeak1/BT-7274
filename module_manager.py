@@ -27,13 +27,14 @@ def load_modules(dir, client):
 
 
 async def is_module_enabled(module_name,guild,interaction=None):
-    if interaction is not None:
+    is_enabled = data_manager.get_module_setting(guild).get(module_name, False)
+    if interaction is not None and is_enabled:
         embed = nextcord.Embed(colour=Color.red(),
                                title="Module is disabled",
                                description=f"the module has been disabled by a moderator",
                                timestamp=datetime.now())
 
         await interaction.send(embed=embed, ephemeral=True)
-    return data_manager.get_module_setting(guild).get(module_name,False)
+    return is_enabled
 
 
