@@ -48,8 +48,6 @@ def get_current_birthday(day,month):
 def get_user_birthday(user_id, guild_id):
     data = database.table('user_birthdates').select('*').eq('user_id', user_id).maybe_single().execute()
 
-    print(get_attr(get_attr(data, "data", None), "guild_ids", []))
-
     if guild_id in get_attr(get_attr(data, "data", None), "guild_ids", []):
         return get_attr(data, "data", None)
     return None
@@ -104,5 +102,3 @@ def get_modules():
     data = database.table("enabled_modules").select("*").eq("guild_id",1).single().execute().data
 
     return list(data.keys())
-
-print(get_current_birthday(12,2))

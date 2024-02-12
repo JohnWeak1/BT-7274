@@ -13,7 +13,6 @@ def format_date(date):
 
 async def birthday_cmd(interaction, member):
     next_bd = data_manager.get_user_next_birthday(member.id, interaction.guild_id)
-    print(next_bd)
     if next_bd is not None:
         unix = int(time.mktime(next_bd.timetuple()))
         embed = nextcord.Embed(colour=Color.green(), timestamp=datetime.now(),
