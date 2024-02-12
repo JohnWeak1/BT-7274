@@ -39,7 +39,6 @@ async def bd_set(interaction: Interaction,
                  day: int = SlashOption(name="day", min_value=1, max_value=31),
                  month: int = SlashOption(name="month", min_value=1, max_value=12)):
     is_enabled = await is_module_enabled("birthday", interaction.guild_id, interaction)
-    print(is_enabled)
     if not is_enabled: return
 
     response = data_manager.set_user_birthday(interaction.user.id, day, month, interaction.guild_id)
