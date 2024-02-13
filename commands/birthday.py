@@ -76,10 +76,9 @@ async def bd_force_set(interaction: Interaction,
                        month: int = SlashOption(name="month", min_value=1, max_value=12)):
     is_enabled = await is_module_enabled("birthday", interaction.guild_id, interaction)
     if not is_enabled: return
-    if not await is_user_authed(interaction,False): return
+    if not await is_user_authed(interaction, False): return
 
     response = data_manager.set_user_birthday(member.id, day, month, interaction.guild_id)
-
 
     if response is not None:
         embed = nextcord.Embed(colour=Color.green(),
@@ -102,15 +101,13 @@ async def bd_get_next(interaction: Interaction):
 
     data = data_manager.get_guild_birthdays(interaction.guild_id)
 
-    if data is not None:
+    if len(data) > 0:
         embed = nextcord.Embed(title="Next birthdays :", color=Color.green(), timestamp=datetime.now())
         next_bds = [{'user': d['user_id'], 'date': data_manager.get_next_birthday(d["day"], d["month"])} for d in data]
         next_bds = sorted(next_bds, key=lambda d: d['date'])
         for bd in next_bds:
             unix = int(time.mktime(bd['date'].timetuple()))
             embed.add_field(name=" ", value=f"<@{bd['user']}> : <t:{unix}:D>(<t:{unix}:R>)", inline=False)
-
-
     else:
         embed = nextcord.Embed(title="No next birthdays :", color=Color.red(), timestamp=datetime.now(),
                                description="nobody has set their birthdays on this server")
