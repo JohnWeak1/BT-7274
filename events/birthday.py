@@ -11,15 +11,14 @@ async def check_birthday():
 
     birthdays = data_manager.get_current_birthday(now.day, now.month)
 
-    for birthday in birthdays:
-        for guild_id in birthday["guild_ids"]:
+    for bd in birthdays:
 
-            channel_id = data_manager.get_default_channel(guild_id, "birthday")
-            if channel_id is not None:
-                def_channel = client.get_guild(guild_id).get_channel(channel_id)
-            else:
-                def_channel = client.get_guild(guild_id).system_channel
+        channel_id = data_manager.get_default_channel(bd["guild_id"], "birthday")
+        if channel_id is not None:
+            def_channel = client.get_guild(bd["guild_id"]).get_channel(channel_id)
+        else:
+            def_channel = client.get_guild(bd["guild_id"]).system_channel
 
-            await def_channel.send("@everyone", embed=nextcord.Embed(title="Happy birthday !",
-                                                                     description=f"today is <@{birthday['user_id']}>'s birthday !",
+        await def_channel.send("@everyone", embed=nextcord.Embed(title="Happy birthday !",
+                                                                 description=f"today is <@{bd['user_id']}>'s birthday !",
                                                                      timestamp=now))

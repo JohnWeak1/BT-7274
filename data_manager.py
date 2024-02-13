@@ -34,23 +34,22 @@ def set_user_birthday(user_id, day, month, guild):
     except ValueError:
         return None
 
-    cell_array("user_birthdates", "guild_ids", "user_id", user_id, guild)
+    #cell_array("user_birthdates", "guild_ids", "user_id", user_id, guild)
 
-    database.table('user_birthdates').upsert(
-        {'user_id': user_id, 'day': day, 'month': month}).execute()
+    database.table('user_birthdays').upsert(
+        {'user_id': user_id,'guild_id':guild, 'day': day, 'month': month}).execute()
     return Date
 
 def get_current_birthday(day,month):
-    data = database.table('user_birthdates').select('*').eq('month', month).eq('day',day).execute()
+    data = database.table('user_birthdays').select('*').eq('month', month).eq('day',day).execute()
 
     return get_attr(data,"data",[])
 
 def get_user_birthday(user_id, guild_id):
-    data = database.table('user_birthdates').select('*').eq('user_id', user_id).maybe_single().execute()
+    data = (database.table('user_birthdays').select('*').eq('user_id', user_id).eq("guild_id",guild_id)
+            .maybe_single().execute())
 
-    if guild_id in get_attr(get_attr(data, "data", None), "guild_ids", []):
-        return get_attr(data, "data", None)
-    return None
+    return get_attr(data, "data", None)
 
 
 def get_user_next_birthday(user_id,guild_id):
