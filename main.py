@@ -10,7 +10,7 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 print("launching bot...")
 
 f = open("config/setup.json", "r")
-TOKEN = json.load(f)["token_alt"]
+TOKEN = json.load(f)["token"]
 f.close()
 
 intents = nextcord.Intents.default()
