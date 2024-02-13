@@ -51,16 +51,16 @@ def get_user_birthday(user_id, guild_id):
 
     return get_attr(data, "data", None)
 
+def get_guild_birthdays(guild_id):
+    data = database.table('user_birthdays').select('*').eq("guild_id",guild_id).execute()
 
-def get_user_next_birthday(user_id,guild_id):
-    bd = get_user_birthday(user_id,guild_id)
+    return get_attr(data, "data", None)
 
-    if bd is None: return None
-
-    bd_datetime = dt(2004, month=bd["month"], day=bd["day"])
+def get_next_birthday(day,month):
+    bd_datetime = dt(2004, month=month, day=day)
     cur_datetime = dt.now().replace(year=2004)
 
-    return bd_datetime.replace(year=dt.now().year + (cur_datetime > bd_datetime))
+    return bd_datetime.replace(hour=0, minute=0, year=dt.now().year + (cur_datetime > bd_datetime))
 
 
 def set_default_channel(server_id, column, channel_id):

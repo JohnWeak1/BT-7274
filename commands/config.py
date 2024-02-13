@@ -3,6 +3,7 @@ from datetime import datetime
 from typing import Optional, Set
 import nextcord
 import data_manager
+from func import is_user_authed
 
 unauthed_admin_embed = nextcord.Embed(colour=Color.red(),
                                       title="this is a server admin only command :",
@@ -12,11 +13,7 @@ unauthed_role_embed = unauthed_admin_embed
 unauthed_role_embed.title = "this is a authorized only command :"
 
 
-def is_user_authed(interaction):
-    is_authed = data_manager.are_roles_authed(interaction.guild.id,
-                                              [role.id for role in interaction.user.roles])
-    is_admin = interaction.user.guild_permissions.administrator
-    return is_authed or is_admin
+
 
 
 @client.slash_command(name="config")
