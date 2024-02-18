@@ -3,3 +3,4 @@ tinydb~=4.8.0
 python-dateutil~=2.8.2
 supabase~=2.3.4
 aiocron~=1.8
+mafic~=2.10.0
