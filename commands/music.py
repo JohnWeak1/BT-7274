@@ -1,11 +1,9 @@
-import os
+from datetime import datetime
 
 import mafic
 import nextcord
-from nextcord import Interaction, Color
-from nextcord.ext import commands
-from datetime import datetime
 from mafic import EndReason
+from nextcord import Interaction, Color
 
 Queue = {}
 
