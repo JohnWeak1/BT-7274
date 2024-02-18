@@ -12,8 +12,9 @@ print("launching bot...")
 
 f = open("config/setup.json", "r")
 config = json.load(f)
-TOKEN = config["token_alt"]
+TOKEN = config["token"]
 WAVELINK_KEY = config["wavelink_key"]
+WAVELINK_IP = config["wavelink_ip"]
 f.close()
 
 intents = nextcord.Intents.default()
@@ -32,10 +33,10 @@ class bot(nextcordcommands.Bot):
 
     async def add_nodes(self):
         await self.pool.create_node(
-            host="192.168.0.21",
+            host=WAVELINK_IP,
             port=2333,
             label="MAIN",
-            password="youshallnotpass",
+            password=WAVELINK_KEY,
         )
 
 
