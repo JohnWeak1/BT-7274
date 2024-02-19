@@ -1,6 +1,25 @@
 # BT-7274 discord bot
 
-## commands
+## Requirements :
+#### [supabase host](https://github.com/supabase/supabase)
+
+#### [lavalink host](https://github.com/lavalink-devs/Lavalink)
+
+#### python :
+```
+nextcord~=2.6.0
+tinydb~=4.8.0
+python-dateutil~=2.8.2
+supabase~=2.3.4
+aiocron~=1.8
+mafic~=2.10.0
+```
+
+## setup :
+
+comming soon
+
+## Commands :
 
 #### birthday
 | command | Description |
@@ -26,4 +45,6 @@
 | ----------- | ----------- |
 | `/config birthday_channel <optional:channel>` | set the server's default birthday annoucement channel (set to the system channel if None) |
 | `/config authorize_role <role> <status>` | set someone's authorization status to true or false (admin only command) |
+
+
 
