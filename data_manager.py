@@ -34,8 +34,6 @@ def set_user_birthday(user_id, day, month, guild):
     except ValueError:
         return None
 
-    #cell_array("user_birthdates", "guild_ids", "user_id", user_id, guild)
-
     database.table('user_birthdays').upsert(
         {'user_id': user_id,'guild_id':guild, 'day': day, 'month': month}).execute()
     return Date
