@@ -40,6 +40,9 @@ def set_user_birthday(user_id, day, month, guild):
         {'user_id': user_id,'guild_id':guild, 'day': day, 'month': month}).execute()
     return Date
 
+def remove_user_birthday(user_id, guild):
+    database.table("user_birthdays").delete().eq('user_id',user_id).eq('guild_id',guild)
+
 def get_current_birthday(day,month):
     data = database.table('user_birthdays').select('*').eq('month', month).eq('day',day).execute()
 
