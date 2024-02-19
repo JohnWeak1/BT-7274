@@ -24,6 +24,7 @@ intents.messages = True
 intents.guilds = True
 
 
+
 class bot(nextcordcommands.Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
