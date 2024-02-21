@@ -50,7 +50,7 @@ async def birthday_channel(interaction: Interaction,
                            channel: Optional[TextChannel] = SlashOption(required=False)):
     channelid = getattr(channel,"id",None)
 
-    if is_user_authed(interaction):
+    if await is_user_authed(interaction):
         data_manager.set_default_channel(interaction.guild.id, "birthday", channelid)
         embed = Embed(title="Birthday channel changed :", colour=Color.green(),
                       description=f"<#{channelid}> has been set to the default birthday announcement channel",
