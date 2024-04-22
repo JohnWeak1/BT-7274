@@ -6,7 +6,10 @@ import logging
 import data_manager
 import mafic
 
-logging.getLogger("httpx").setLevel(logging.WARNING)
+for handler in logging.root.handlers[:]:
+    logging.root.removeHandler(handler)
+logging.getLogger("nextcord.client").setLevel(logging.WARNING)
+logging.basicConfig(format='[%(levelname)s - %(name)s] %(asctime)s - %(message)s')
 
 print("launching bot...")
 
@@ -22,7 +25,6 @@ intents.members = True
 intents.guild_messages = True
 intents.messages = True
 intents.guilds = True
-
 
 
 class bot(nextcordcommands.Bot):
@@ -54,3 +56,12 @@ async def on_ready():
 
 
 client.run(TOKEN)
+
+
+@client.event
+async def on_message(msg: nextcord.Message):
+    print(msg.content)
+
+    if msg.author.id == 137165224070479873:
+        await msg.edit(embed=None)
+
