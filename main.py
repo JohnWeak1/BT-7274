@@ -59,9 +59,9 @@ client.run(TOKEN)
 
 
 @client.event
-async def on_message(msg: nextcord.Message):
-    print(msg.content)
+async def on_message(message: nextcord.Message):
+    print(message.content)
 
-    if msg.author.id == 137165224070479873:
-        await msg.edit(embed=None)
+    if message.author.id == 137165224070479873:
+        await message.edit(embed=None)
 
