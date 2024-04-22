@@ -55,13 +55,6 @@ async def on_ready():
     data_manager.init_guild_config([guild.id for guild in client.guilds])
 
 
-@client.event
-async def on_message(message: nextcord.Message):
-    print(message.content)
-
-    if message.author.id == 137165224070479873:
-        await message.edit(embed=None)
-
 
 client.run(TOKEN)
 
